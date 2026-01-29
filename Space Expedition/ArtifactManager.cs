@@ -44,5 +44,13 @@ namespace Space_Expedition
 
             SortArtifacts();
         }
+
+        public void ShowAll()
+        {
+            for (int i = 0; i < count; i++)
+            {
+                Console.WriteLine(artifacts[i].DecodedName + " - " + artifacts[i].Planet);
+            }
+        }
     }
 }
