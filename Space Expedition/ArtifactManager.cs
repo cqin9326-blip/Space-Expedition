@@ -11,10 +11,23 @@ namespace Space_Expedition
         private Artifact[] artifacts = new Artifact[5];
         private int count = 0;
 
-        public ArtifactCollection()
+
+        private void AddToArray(Artifact artifact)
         {
-            artifactList = new Artifact[MaximumArtifacts];
-            artifactCount = 0;
+            if (count == artifacts.Length)
+            {
+                Artifact[] newarray = new Artifact[artifacts.Length * 2];
+
+                for (int i = 0; i < artifacts.Length; i++)
+                {
+                    newarray[i] = artifacts[i];
+                }
+
+                artifacts = newarray;
+            }
+
+            artifacts[count] = artifact;
+            count++;
         }
 
         public void LoadVault()
@@ -45,12 +58,6 @@ namespace Space_Expedition
             SortArtifacts();
         }
 
-        public void ShowAll()
-        {
-            for (int i = 0; i < count; i++)
-            {
-                Console.WriteLine(artifacts[i].DecodedName + " - " + artifacts[i].Planet);
-            }
-        }
+
     }
 }
