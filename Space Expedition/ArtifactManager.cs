@@ -116,6 +116,25 @@ namespace Space_Expedition
             return DecodeLayer(mapped, level - 1);
         }
 
+        private string DecodeName(string encoded)
+        {
+            if (encoded.Length == 0)
+            {
+                return "";
+            }
+
+            char letter = encoded[0];
+
+            if (encoded.Length == 1)
+            {
+                return Mirror(letter).ToString();
+            }
+
+            int level = int.Parse(encoded[1].ToString());
+
+            return DecodeLayer(letter, level) + DecodeName(encoded.Substring(2));
+        }
+
 
     }
 }
