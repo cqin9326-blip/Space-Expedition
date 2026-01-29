@@ -151,6 +151,24 @@ namespace Space_Expedition
             return name1.Length - name2.Length;
         }
 
+        private void InsertionSort()
+        {
+            for (int i = 1; i < count; i++)
+            {
+                Artifact key = artifacts[i];
+                int j = i - 1;
+
+                while (j >= 0 &&
+                       CompareNames(artifacts[j].DecodedName, key.DecodedName) > 0)
+                {
+                    artifacts[j + 1] = artifacts[j];
+                    j--;
+                }
+
+                artifacts[j + 1] = key;
+            }
+        }
+
 
 
 
