@@ -105,6 +105,17 @@ namespace Space_Expedition
             return letter;
         }
 
+        private string DecodeLayer(char letter, int level)
+        {
+            if (level == 1)
+            {
+                return Mirror(letter).ToString();
+            }
+
+            char mapped = Map(letter);
+            return DecodeLayer(mapped, level - 1);
+        }
+
 
     }
 }
