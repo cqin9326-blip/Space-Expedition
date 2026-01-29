@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Space Expedition")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bccdf2565e395c4c4fe5563edeca1b156140e667")]
 [assembly: System.Reflection.AssemblyProductAttribute("Space Expedition")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Space Expedition")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

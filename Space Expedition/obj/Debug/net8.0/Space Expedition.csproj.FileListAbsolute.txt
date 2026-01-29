@@ -1,0 +1,17 @@
+D:\C#_A1\Space Expedition\Space Expedition\bin\Debug\net8.0\galactic_vault.txt
+D:\C#_A1\Space Expedition\Space Expedition\bin\Debug\net8.0\Nebula Noodle Net.txt
+D:\C#_A1\Space Expedition\Space Expedition\bin\Debug\net8.0\Space Expedition.exe
+D:\C#_A1\Space Expedition\Space Expedition\bin\Debug\net8.0\Space Expedition.deps.json
+D:\C#_A1\Space Expedition\Space Expedition\bin\Debug\net8.0\Space Expedition.runtimeconfig.json
+D:\C#_A1\Space Expedition\Space Expedition\bin\Debug\net8.0\Space Expedition.dll
+D:\C#_A1\Space Expedition\Space Expedition\bin\Debug\net8.0\Space Expedition.pdb
+D:\C#_A1\Space Expedition\Space Expedition\obj\Debug\net8.0\Space Expedition.GeneratedMSBuildEditorConfig.editorconfig
+D:\C#_A1\Space Expedition\Space Expedition\obj\Debug\net8.0\Space Expedition.AssemblyInfoInputs.cache
+D:\C#_A1\Space Expedition\Space Expedition\obj\Debug\net8.0\Space Expedition.AssemblyInfo.cs
+D:\C#_A1\Space Expedition\Space Expedition\obj\Debug\net8.0\Space Expedition.csproj.CoreCompileInputs.cache
+D:\C#_A1\Space Expedition\Space Expedition\obj\Debug\net8.0\Space Expedition.sourcelink.json
+D:\C#_A1\Space Expedition\Space Expedition\obj\Debug\net8.0\Space Expedition.dll
+D:\C#_A1\Space Expedition\Space Expedition\obj\Debug\net8.0\refint\Space Expedition.dll
+D:\C#_A1\Space Expedition\Space Expedition\obj\Debug\net8.0\Space Expedition.pdb
+D:\C#_A1\Space Expedition\Space Expedition\obj\Debug\net8.0\Space Expedition.genruntimeconfig.cache
+D:\C#_A1\Space Expedition\Space Expedition\obj\Debug\net8.0\ref\Space Expedition.dll
