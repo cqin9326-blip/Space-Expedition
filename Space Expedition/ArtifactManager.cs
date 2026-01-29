@@ -8,6 +8,7 @@ namespace Space_Expedition
 {
     internal class ArtifactManager
     {
-        
+        private Artifact[] list = new Artifact[200];
+        private int count = 0;
     }
 }
