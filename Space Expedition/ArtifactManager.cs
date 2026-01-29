@@ -169,6 +169,25 @@ namespace Space_Expedition
             }
         }
 
+        private int BinarySearch(string decodedName)
+        {
+            int left = 0;
+            int right = count - 1;
+
+            while (left <= right)
+            {
+                int mid = (left + right) / 2;
+
+                int key = CompareNames(artifacts[mid].DecodedName, decodedName);
+
+                if (key == 0) return mid;
+                if (key < 0) left = mid + 1;
+                else right = mid - 1;
+            }
+
+            return -1;
+        }
+
 
 
 
