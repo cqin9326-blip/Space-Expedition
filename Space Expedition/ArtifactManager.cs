@@ -135,6 +135,24 @@ namespace Space_Expedition
             return DecodeLayer(letter, level) + DecodeName(encoded.Substring(2));
         }
 
+        private int CompareNames(string name1, string name2)
+        {
+            int i = 0;
+
+            while (i < name1.Length && i < name2.Length)
+            {
+                if (name1[i] != name2[i])
+                {
+                    return name1[i] - name2[i];
+                }
+                i++;
+            }
+
+            return name1.Length - name2.Length;
+        }
+
+
+
 
     }
 }
