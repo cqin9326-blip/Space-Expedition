@@ -23,5 +23,26 @@ namespace Space_Expedition
             'H','Z','A','U','Y','E','K','G','O','T','I','R','J',
             'V','W','N','M','F','Q','S','D','B','X','L','C','P'
         };
+
+        public void Load(string fileName)
+        {
+            string[] lines = File.ReadAllLines(fileName);
+
+            foreach (string line in lines)
+            {
+                string[] p = line.Split(',');
+
+                Artifact a = new Artifact();
+                a.EncodedName = p[0].Trim();
+                a.DecodedName = DecodeName(a.EncodedName);
+                a.Planet = p[1].Trim();
+                a.DiscoveryDate = p[2].Trim();
+                a.StorageLocation = p[3].Trim();
+                a.Description = p[4].Trim();
+
+                list[count++] = a;
+            }
+            SortByName();
+        }
     }
 }

@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("TESTE");
+            ArtifactManager manager = new ArtifactManager();
+            manager.Load("galactic_vault.txt");
         }
     }
 }
