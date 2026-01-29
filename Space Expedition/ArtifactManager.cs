@@ -8,8 +8,15 @@ namespace Space_Expedition
 {
     internal class ArtifactManager
     {
-        private Artifact[] list = new Artifact[200];
-        private int count = 0;
+        private const int MaximumArtifacts = 100;
+        private Artifact[] artifactList;
+        private int artifactCount;
+
+        public ArtifactCollection()
+        {
+            artifactList = new Artifact[MaximumArtifacts];
+            artifactCount = 0;
+        }
 
 
         private char[] mapFrom =
@@ -33,6 +40,7 @@ namespace Space_Expedition
                 string[] p = line.Split(',');
 
                 Artifact a = new Artifact();
+
                 a.EncodedName = p[0].Trim();
                 a.DecodedName = DecodeName(a.EncodedName);
                 a.Planet = p[1].Trim();

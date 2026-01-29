@@ -8,12 +8,12 @@ namespace Space_Expedition
 {
     internal class Artifact
     {
-        public string EncodedName;
-        public string DecodedName;
-        public string Planet;
-        public string DiscoveryDate;
-        public string StorageLocation;
-        public string Description;
+    public string EncodedName { get; set; }
+    public string DecodedName { get; set; }
+    public string Planet { get; set; }
+    public string DiscoveryDate { get; set; }
+    public string StorageLocation { get; set; }
+    public string Description { get; set; }
     }
 
 }
