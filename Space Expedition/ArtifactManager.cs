@@ -188,6 +188,23 @@ namespace Space_Expedition
             return -1;
         }
 
+        private void OrderedInsert(Artifact artifact)
+        {
+            EnsureCapacity();
+
+            int i = count - 1;
+
+            while (i >= 0 &&
+                   CompareNames(artifacts[i].DecodedName, artifact.DecodedName) > 0)
+            {
+                artifacts[i + 1] = artifacts[i];
+                i--;
+            }
+
+            artifacts[i + 1] = artifact;
+            count++;
+        }
+
 
 
 
