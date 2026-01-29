@@ -8,9 +8,8 @@ namespace Space_Expedition
 {
     internal class ArtifactManager
     {
-        private const int MaximumArtifacts = 100;
-        private Artifact[] artifactList;
-        private int artifactCount;
+        private Artifact[] artifacts = new Artifact[5];
+        private int count = 0;
 
         public ArtifactCollection()
         {
@@ -18,39 +17,32 @@ namespace Space_Expedition
             artifactCount = 0;
         }
 
-
-        private char[] mapFrom =
-{
-            'A','B','C','D','E','F','G','H','I','J','K','L','M',
-            'N','O','P','Q','R','S','T','U','V','W','X','Y','Z'
-        };
-
-        private char[] mapTo =
+        public void LoadVault()
         {
-            'H','Z','A','U','Y','E','K','G','O','T','I','R','J',
-            'V','W','N','M','F','Q','S','D','B','X','L','C','P'
-        };
-
-        public void Load(string fileName)
-        {
-            string[] lines = File.ReadAllLines(fileName);
-
-            foreach (string line in lines)
+            if (!File.Exists("galactic_vault.txt"))
             {
-                string[] p = line.Split(',');
-
-                Artifact a = new Artifact();
-
-                a.EncodedName = p[0].Trim();
-                a.DecodedName = DecodeName(a.EncodedName);
-                a.Planet = p[1].Trim();
-                a.DiscoveryDate = p[2].Trim();
-                a.StorageLocation = p[3].Trim();
-                a.Description = p[4].Trim();
-
-                list[count++] = a;
+                Console.WriteLine("galactic_vault.txt not found.");
+                return;
             }
-            SortByName();
+
+            string[] lines = File.ReadAllLines("galactic_vault.txt");
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                string[] part = lines[i].Split(',');
+
+                Artifact artifact = new Artifact();
+                artifact.EncodedName = part[0].Trim();
+                artifact.DecodedName = DecodeName(artifact.EncodedName);
+                artifact.Planet = part[1].Trim();
+                artifact.DiscoveryDate = part[2].Trim();
+                artifact.StorageLocation = part[3].Trim();
+                artifact.Description = part[4].Trim();
+
+                AddToArray(artifact);
+            }
+
+            SortArtifacts();
         }
     }
 }
