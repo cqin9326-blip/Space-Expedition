@@ -6,6 +6,7 @@
         {
             ArtifactManager manager = new ArtifactManager();
             Menu menu = new Menu(manager);
+            manager.LoadVault();
             menu.Start();
         }
     }

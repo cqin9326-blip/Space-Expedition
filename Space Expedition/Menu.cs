@@ -22,11 +22,10 @@ namespace Space_Expedition
             while (running)
             {
                 Console.WriteLine();
-                Console.WriteLine("===== Space Expedition Menu =====");
-                Console.WriteLine("1. Load Galactic Vault");
-                Console.WriteLine("2. View Inventory");
-                Console.WriteLine("3. Add New Artifact");
-                Console.WriteLine("4. Save and Exit");
+                Console.WriteLine("<------Space Expedition Menu ------>");
+                Console.WriteLine("1. View Inventory");
+                Console.WriteLine("2. Add New Artifact");
+                Console.WriteLine("3. Save and Exit");
                 Console.Write("Choose an option: ");
 
                 string choice = Console.ReadLine();
@@ -34,24 +33,20 @@ namespace Space_Expedition
                 switch (choice)
                 {
                     case "1":
-                        manager.LoadVault();
-                        break;
-
-                    case "2":
                         manager.ShowAll();
                         break;
 
-                    case "3":
+                    case "2":
                         manager.AddArtifact();
                         break;
 
-                    case "4":
+                    case "3":
                         manager.SaveToFile();
                         running = false;
                         break;
 
                     default:
-                        Console.WriteLine("Invalid option.");
+                        Console.WriteLine("Invalid option."); 
                         break;
                 }
             }

@@ -267,10 +267,7 @@ namespace Space_Expedition
             }
 
             writer.Close();
-            Console.WriteLine("Saved.");
+            Console.WriteLine("Saved.");   //Generated file will be saved in "bin-debug-net8.0", i didnt point as a certain saving path.
         }
-
-
-
     }
 }
