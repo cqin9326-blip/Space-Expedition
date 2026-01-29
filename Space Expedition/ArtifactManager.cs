@@ -12,51 +12,20 @@ namespace Space_Expedition
         private int count = 0;
 
 
-        private void AddToArray(Artifact artifact)
+        private void AddToArray()
         {
-            if (count == artifacts.Length)
+            if (count < artifacts.Length) return;
+
+            Artifact[] newarray = new Artifact[artifacts.Length * 2];
+
+            for (int i = 0; i < artifacts.Length; i++)
             {
-                Artifact[] newarray = new Artifact[artifacts.Length * 2];
-
-                for (int i = 0; i < artifacts.Length; i++)
-                {
-                    newarray[i] = artifacts[i];
-                }
-
-                artifacts = newarray;
+                newarray[i] = artifacts[i];
             }
 
-            artifacts[count] = artifact;
-            count++;
+            artifacts = newarray;
         }
 
-        public void LoadVault()
-        {
-            if (!File.Exists("galactic_vault.txt"))
-            {
-                Console.WriteLine("galactic_vault.txt not found.");
-                return;
-            }
-
-            string[] lines = File.ReadAllLines("galactic_vault.txt");
-
-            for (int i = 0; i < lines.Length; i++)
-            {
-                string[] part = lines[i].Split(',');
-
-                Artifact artifact = new Artifact();
-                artifact.EncodedName = part[0].Trim();
-                artifact.DecodedName = DecodeName(artifact.EncodedName);
-                artifact.Planet = part[1].Trim();
-                artifact.DiscoveryDate = part[2].Trim();
-                artifact.StorageLocation = part[3].Trim();
-                artifact.Description = part[4].Trim();
-
-                AddToArray(artifact);
-            }
-
-            SortArtifacts();
-        }
 
         private char Map(char letter)
         {
@@ -123,14 +92,22 @@ namespace Space_Expedition
                 return "";
             }
 
+
+            if (encoded[0] < 'A' || encoded[0] > 'Z')
+            {
+                return DecodeName(encoded.Substring(1));
+            }
+
             char letter = encoded[0];
 
-            if (encoded.Length == 1)
+
+            if (encoded.Length == 1 ||
+                encoded[1] < '0' || encoded[1] > '9')
             {
                 return Mirror(letter).ToString();
             }
 
-            int level = int.Parse(encoded[1].ToString());
+            int level = encoded[1] - '0';
 
             return DecodeLayer(letter, level) + DecodeName(encoded.Substring(2));
         }
@@ -190,7 +167,7 @@ namespace Space_Expedition
 
         private void OrderedInsert(Artifact artifact)
         {
-            EnsureCapacity();
+            AddToArray();
 
             int i = count - 1;
 
@@ -205,6 +182,93 @@ namespace Space_Expedition
             count++;
         }
 
+        public void LoadVault()
+        {
+            count = 0;
+            if (!File.Exists("galactic_vault.txt"))
+            {
+                Console.WriteLine("galactic_vault.txt not found.");
+                return;
+            }
+
+            string[] lines = File.ReadAllLines("galactic_vault.txt");
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                string[] part = lines[i].Split(',');
+
+                Artifact artifact = new Artifact();
+                artifact.EncodedName = part[0].Trim();
+                artifact.DecodedName = DecodeName(artifact.EncodedName);
+                artifact.Planet = part[1].Trim();
+                artifact.DiscoveryDate = part[2].Trim();
+                artifact.StorageLocation = part[3].Trim();
+                artifact.Description = part[4].Trim();
+
+                AddToArray();
+                artifacts[count] = artifact;
+                count++;
+            }
+            InsertionSort();
+            Console.WriteLine("Galactic Vault loaded: " + count + " artifacts.");
+        }
+
+        public void AddArtifact()
+        {
+            Console.Write("Enter artifact name: ");
+            string name = Console.ReadLine();
+
+            string fileName = name + ".txt";
+
+            if (!File.Exists(fileName))
+            {
+                Console.WriteLine("File not found.");
+                return;
+            }
+
+            string[] part = File.ReadAllLines(fileName)[0].Split(',');
+
+            Artifact artifact = new Artifact();
+            artifact.EncodedName = part[0].Trim();
+            artifact.DecodedName = DecodeName(artifact.EncodedName);
+            artifact.Planet = part[1].Trim();
+            artifact.DiscoveryDate = part[2].Trim();
+            artifact.StorageLocation = part[3].Trim();
+            artifact.Description = part[4].Trim();
+
+            if (BinarySearch(artifact.DecodedName) != -1)
+            {
+                Console.WriteLine("Artifact already exists.");
+                return;
+            }
+
+            OrderedInsert(artifact);
+            Console.WriteLine("Artifact added.");
+        }
+
+        public void ShowAll()
+        {
+            for (int i = 0; i < count; i++)
+            {
+                Console.WriteLine(
+                    artifacts[i].DecodedName + " - " + artifacts[i].Planet
+                );
+            }
+        }
+
+        public void SaveToFile()
+        {
+            StreamWriter writer = new StreamWriter("expedition_summary.txt");
+
+            for (int i = 0; i < count; i++)
+            {
+                Artifact a = artifacts[i];
+                writer.WriteLine( a.DecodedName + ", " + a.Planet + ", " + a.DiscoveryDate + ", " + a.StorageLocation + ", " + a.Description );
+            }
+
+            writer.Close();
+            Console.WriteLine("Saved.");
+        }
 
 
 

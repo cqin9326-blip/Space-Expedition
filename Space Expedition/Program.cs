@@ -5,7 +5,8 @@
         static void Main(string[] args)
         {
             ArtifactManager manager = new ArtifactManager();
-            manager.Load("galactic_vault.txt");
+            Menu menu = new Menu(manager);
+            menu.Start();
         }
     }
 }
